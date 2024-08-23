@@ -10,6 +10,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "10 Cards",
   description: "Flash Card generation and management app created by Akhil Trivedi",
+  openGraph: {
+    images: '/demoImage.png'
+  }
 };
 
 export default function RootLayout({
