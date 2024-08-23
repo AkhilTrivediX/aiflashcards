@@ -1,0 +1,284 @@
+.noAnimation{
+    animation: none;
+}
+.loadingTextSlider{
+    animation: loadingTextAnimation 4s ease-in-out infinite;
+    animation-delay: -1s;
+}
+
+.loadingTextSlider:nth-of-type(even){
+    animation-direction: reverse;
+}
+
+.loadingTextSliderPulse{
+    animation: loadingTextAnimationPulse 20s ease-in-out infinite;
+}
+
+.loadingTextSliderPulse:nth-of-type(even){
+    animation-direction: reverse;
+}
+
+@keyframes loadingTextAnimation {
+    0%{
+        transform: translateY(0%);
+    }
+    20%{
+        transform: translateY(0%);
+    }
+    80%{
+        transform: translateY(var(--ySpacing));
+    }
+    100%{
+        transform: translateY(var(--ySpacing));
+    }
+}
+
+@keyframes loadingTextAnimationPulse {
+    5%{
+        transform: translateY(0%);
+    }
+    45%{
+        transform: translateY(0%);
+    }
+    55%{
+        transform: translateY(var(--ySpacing));
+    }
+    95%{
+        transform: translateY(var(--ySpacing));
+    }
+}
+
+
+#slider{
+    position: absolute;
+    width: 200px;
+    height: 125px;
+    top: calc(40% - 125px);
+    left: calc(50% - 100px);
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateX(16deg) rotateY(0deg);
+  }
+
+  .revolvingSlider{
+    animation: sliderAnimation 20s infinite linear forwards;
+  }
+
+  
+  @keyframes sliderAnimation {
+    from{
+      transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
+    }
+    to{
+      transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
+    }
+    
+  }
+
+
+.animateLeftToFro{
+    animation: animateLeftToFro 1s ease-in-out infinite alternate;
+}
+
+.animateRightToFro{
+    animation: animateRightToFro 1s ease-in-out infinite alternate;
+}
+
+@keyframes animateLeftToFro {
+    from{
+        left: 25%;
+        width: 100px;
+    }
+    to{
+        left: 0px;
+        width: 50px;
+    }
+}
+
+@keyframes animateRightToFro {
+    from{
+        right: 25%;
+        width: 100px;
+    }
+    to{
+        right: 0%;
+        width: 50px;
+    }
+}
+
+.YTextAnimation{
+    animation: translatingYTextAnimation 2s ease-in-out infinite;
+}
+
+@keyframes translatingYTextAnimation {
+    0%{
+        transform: translateY(0%);
+    }
+    60%{
+        transform: translateY(100%);
+    }
+    65%{
+        transform: translateY(100%);
+    }
+    100%{
+        transform: translateY(0%);
+    }
+    
+}
+
+.flashCard{
+    inset: 0 0 0 0;
+    opacity: 0;
+    transform: 
+        rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+      translateZ(550px);
+    animation: cardUplift 1s ease-in-out forwards;
+    
+  }
+
+@keyframes cardUplift {
+    from{
+        transform: 
+        scale(0.5)
+        rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+        translateY(calc( (var(--position) - 1) * 40px))
+        translateZ(550px);
+        opacity: 0;
+    }    
+    to{
+        transform: 
+        scale(1)
+        rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+        translateY(0px)
+        translateZ(550px);
+        opacity: 1;
+    }
+}
+
+.radialMask{
+    mask-image: radial-gradient(circle, black 20%, rgba(0, 0, 0, 0) 50%);
+    mask-size: 0% 0%;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    transition: mask 1s ease;
+    pointer-events: none;
+}
+
+.revealedCard .radialMask{
+    mask-size: 500% 500%;
+    pointer-events: all;
+}
+
+.animateBGDownwards{
+    background: radial-gradient( transparent, theme('colors.foreground') 10%, transparent 30%);
+    background-size: 200% 200%;
+    background-position: center;
+    animation: downwardAnimation 4s ease-in-out infinite;
+}
+
+@keyframes downwardAnimation {
+    0%{
+        background-position: 200% 200%;
+    }
+    100%{
+        background-position: 0% 0%;
+    }    
+}
+
+.card > div{
+    transition: all 300ms ease;
+}
+
+.cardFrontBG{
+    background: radial-gradient(theme('colors.foreground'), theme('colors.bglight'));
+    background-size: 200% 200%;
+    animation: downwardAnimation 4s ease-in-out infinite;
+}
+
+.card:hover > .front{
+    transform-origin: 100% 100%;
+    transform: rotateX(-40deg);
+}
+
+.card:hover > .mid1{
+    transform: translateX(-30px) translateY(-30px) rotateZ(-30deg);
+}
+
+.card:hover > .mid2{
+    top: 20px;
+}
+
+.card:hover > .mid3{
+    transform: translateX(30px) translateY(-30px) rotateZ(30deg);
+}
+  
+.scaledVisible{
+    animation: scaledVisibleAnimation 4s ease-in-out forwards;
+}
+
+@keyframes scaledVisibleAnimation {
+    to{
+        transform: scale(1);
+        opacity: 1;
+    }    
+}
+
+.animationParent:hover .animateScale{
+    scale: 1.2;
+}
+
+.animateScale{
+    opacity: 0.8;
+}
+
+.animationParent:hover .animateScale{
+    opacity: 1;
+}
+
+.animateScale{
+    transition: all 300ms ease;
+}
+
+.smoothTransition{
+    transition: all 300ms ease;
+}
+
+.linearTransition{
+    transition: all 300ms linear;
+}
+
+.testScoreBG{
+    width: 400%;
+    height: 400%;
+    top: 0%;
+    left: 0%;
+    position: absolute;
+    background-size: 20px;
+    background-position: center;
+    animation: bgScrollDiagonal 40s linear infinite;
+    opacity: 0.1;
+}
+
+.checkedBG{
+    background-image: url(/check.svg);
+}
+
+.crossedBG{
+    background-image: url(/cross.svg);
+}
+
+.tenCardsBG{
+    background-size: 40px;
+    animation-duration: 10s;
+    opacity: 0.15;
+    background-image: url(/10CardsBlack.svg);
+}
+
+
+@keyframes bgScrollDiagonal{
+    0%{
+        background-position: top left;
+    }
+    100%{
+        background-position: bottom right;
+    }
+}

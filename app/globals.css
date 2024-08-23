@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
+  --foreground-rgb: 243, 240, 230;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
@@ -26,8 +26,46 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+
+
+
+.noDefaultInput{
+  border: 0;
+  outline: 0;
+  background: transparent;
+  text-align: center;
+  width: 100%;
+  padding: 0;
+}
+
+.sharpCorner-tl{
+  clip-path: polygon(0 3%, 73% 3%, 79% 0, 100% 0%, 100% 95%, 95% 100%, 0% 100%, 0% 70%, 2% 65%, 2% 55%, 0% 51%);
+}
+
+.cutIcon-tr{
+  clip-path: polygon(0% 0%, 80% 0%, 100% 20%, 100% 80%, 100% 100%, 85% 100%, 85% 94%, 94% 85%, 100% 85% ,100% 80%, 90% 80%, 80% 90%, 80% 100%, 0% 100%, 0% 75%, 5% 65%, 5% 55%, 0% 45%)
+}
+
+.octagonDiv{
+  clip-path: polygon(3% 0%, 97% 0%, 100% 10%, 100% 90%, 97% 100%, 3% 100%, 0% 90%, 0% 10%);
+}
+
+.octagonDivMax{
+  clip-path: polygon(5% 0%, 95% 0%, 100% 20%, 100% 80%, 95% 100%, 5% 100%, 0% 80%, 0% 20%);
+}
+
+.gridBG{
+  mask-image: linear-gradient(black .1em, transparent .1em), linear-gradient(90deg, black .1em, transparent .1em);
+  mask-size: 5em 5em;
+}
+
+.removeJagged{
+  outline: 1px solid transparent;
 }
