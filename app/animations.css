@@ -269,7 +269,6 @@
 .tenCardsBG{
     background-size: 40px;
     animation-duration: 10s;
-    opacity: 0.15;
     background-image: url(/10CardsBlack.svg);
 }
 
