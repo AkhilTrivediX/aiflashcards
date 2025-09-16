@@ -32,23 +32,10 @@ export default function FlashSlider() {
     const [cards, setCards] = useState([])
     const [testScores, setTestScores] = useState<number[]>([])
     const [model, setModel] = useState('llama')
-    const sliderRef = useRef(null)
     const promptInputRef = useRef(null)
 
     const [randomString, setRandomString] = useState('')
 
-    const demoStatements = [
-        {statement: 'The closest star to the Sun', reveal: 'Proxima Centauri'},
-        {statement: 'A galaxy shaped like a flat disk with a central bulge', reveal: 'Spiral Galaxy'},
-        {statement: 'The study of the universe and celestial objects', reveal: 'Astronomy'},
-        {statement: 'A reusable spacecraft developed by SpaceX', reveal: 'Falcon 9'},
-        {statement: 'The largest artificial satellite orbiting Earth', reveal: 'International Space Station'},
-        {statement: 'The spacecraft that first landed on the Moon', reveal: 'Apollo 11'},
-        {statement: 'The largest moon in the solar system', reveal: 'Ganymede'},
-        {statement: 'The planet that has the most moons', reveal: 'Jupiter'},
-        {statement: 'The planet that has the fewest moons', reveal: 'Uranus'},
-        {statement: 'The smallest planet in the solar system', reveal: 'Mercury'},
-    ]
 
     let revolvingTimeline = useRef(gsap.timeline({repeat: -1}))
 
@@ -71,7 +58,7 @@ export default function FlashSlider() {
                 <Image src='https://images.pexels.com/photos/911738/pexels-photo-911738.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' layout="fill" objectFit="cover" objectPosition="center" alt="pattern" className="mix-blend-multiply opacity-90"></Image>
                 <div className="absolute w-full h-full bg-foreground mix-blend-color-burn z-[9]"></div>
                 
-                <div className={"w-full h-full p-2 text-foreground text-opacity-80 text-8xs flex justify-center items-center scale-[0.7] flex-col gap-2 z-20 "+tomorrow.className} style={{textRendering:'optimizeLegibility'}}>
+                <div className={"w-full h-full p-2 text-foreground text-opacity-80 text-8xs flex justify-center items-center scale-[0.7] flex-col gap-2 z-20 antialiased"+tomorrow.className} style={{textRendering:'optimizeLegibility'}}>
                     {(card as any).front}
                     {!testMode?<div className="py-1 px-2 bg-foreground sharpCorner-tl text-background cursor-pointer hover:bg-bglight hover:text-foreground" onClick={(e)=>{revealCard(e)}}>Reveal</div>:null}
                 </div>
@@ -259,7 +246,7 @@ export default function FlashSlider() {
                     <div className="bg-background flex cursor-pointer octagonDiv">
                         <div className={"flex px-2 py-1 border-r-[2px] border-foreground font-chivo text-opacity-70 smoothTransition "+(model=='llama'?'bg-foreground text-background ':'bg-background text-foreground')} onClick={()=>{setModel('llama')}}>Llama</div>
                         <div className={"flex px-2 py-1 border-r-[2px] border-foreground font-chivo text-opacity-70 smoothTransition "+(model=='gemma'?'bg-foreground text-background ':'bg-background text-foreground')} onClick={()=>{setModel('gemma')}}>Gemma</div>
-                        <div className={"flex px-2 py-1 border-foreground font-chivo text-opacity-70 smoothTransition "+(model=='mistral'?'bg-foreground text-background ':'bg-background text-foreground')} onClick={()=>{setModel('mistral')}}>Mistral</div>
+                        <div className={"flex px-2 py-1 border-foreground font-chivo text-opacity-70 smoothTransition "+(model=='gpt'?'bg-foreground text-background ':'bg-background text-foreground')} onClick={()=>{setModel('gpt')}}>GPT</div>
                     </div>
                 </div>
             </div>

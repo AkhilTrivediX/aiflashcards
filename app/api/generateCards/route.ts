@@ -10,11 +10,11 @@ export async function POST(request: Request) {
     if(difficulty === 'advanced')
         parsedDifficulty = "Generate questions that are advanced about the topic that are only known if someone has indepth knowledge of the topic."
 
-    let parsedModel = "llama3-70b-8192";
+    let parsedModel = "llama-3.3-70b-versatile";
     if(model === 'gemma')
         parsedModel = "gemma2-9b-it";
-    else if(model === 'mistral')
-        parsedModel = "mixtral-8x7b-32768"
+    else if(model === 'gpt')
+        parsedModel = "openai/gpt-oss-120b"
     if(!topic){
         return Response.json({error: 'Invalid Topic'}, {status: 400})
     }
